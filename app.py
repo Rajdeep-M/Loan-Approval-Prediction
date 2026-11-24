@@ -36,7 +36,7 @@ with col1:
     
     person_emp_exp = st.slider("Experience: ",min_value=0,max_value=50)
     
-    loan_amnt = st.slider("Loan amount",min_value=30000,max_value=10000000)
+    loan_amnt = st.slider("Loan amount",min_value=500,max_value=35000, value=10000)
 
 with col2:
     person_gender = st.radio("Gender: ",options=df["person_gender"].unique(),horizontal=True)
@@ -74,7 +74,7 @@ new_data = pd.DataFrame(new_data,index=[0])
 
 #predictions
 with col4:
-    if st.button("Predict Loan staus"):
+    if st.button("Predict Loan status"):
         prediction = best_pipeline.predict(new_data)[0]
         if prediction==0:
             st.error("Loan Rejected")
